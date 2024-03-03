@@ -1,0 +1,98 @@
+﻿<Window x:Class="Hangman.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hangman"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1200" KeyDown="Window_KeyDown">
+    <Window.Resources>
+        <Style TargetType="Line">
+            <Setter Property="StrokeThickness" Value="2"></Setter>
+            <Setter Property="Stroke" Value="Black"></Setter>
+            <Setter Property="Visibility" Value="Hidden"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="Verdana"></Setter>
+            <Setter Property="Margin" Value="0,0,5,0"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Line x:Name="structure" X1="100" Y1="50" X2="100" Y2="300" />
+        <Line x:Name="baseofhangman" X1="70" Y1="300" X2="130" Y2="300" ></Line>
+        <Line x:Name="diagonal" X1="100" Y1="100" X2="150" Y2="50"></Line>
+        <Line x:Name="roof" X1="100" Y1="50" X2="200" Y2="50" />
+        <Line x:Name="rope" X1="200" Y1="50" X2="200" Y2="100"></Line>
+        <Ellipse x:Name="head" Stroke="Black" Fill="White" Width="50" Height="50" Margin="175 100 0 0" StrokeThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+
+        <!-- Hangman body parts -->
+        <Line x:Name="body" X1="200" Y1="150" X2="200" Y2="250" />
+        <Line x:Name="leftArm" X1="200" Y1="170" X2="170" Y2="195" />
+        <Line x:Name="rightArm" X1="200" Y1="170" X2="230" Y2="195" />
+        <Line x:Name="leftLeg" X1="200" Y1="250" X2="170" Y2="275" />
+        <Line x:Name="rightLeg" X1="200" Y1="250" X2="230" Y2="275"/>
+
+        <Grid VerticalAlignment="Center" Margin="319,0,141,0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Margin="15,0,0,0">
+                <ItemsControl ItemsSource="{Binding GissadeBokstäver}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" Margin="0,0,8,0" FontSize="20"></TextBlock>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <StackPanel Orientation="Horizontal"  Margin="0,20,0,0">
+                    <TextBlock Text="{Binding Alfabetet[0]}" Foreground="{Binding Teckenfärg[0]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[1]}" Foreground="{Binding Teckenfärg[1]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[2]}" Foreground="{Binding Teckenfärg[2]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[3]}" Foreground="{Binding Teckenfärg[3]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[4]}" Foreground="{Binding Teckenfärg[4]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[5]}" Foreground="{Binding Teckenfärg[5]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[6]}" Foreground="{Binding Teckenfärg[6]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[7]}" Foreground="{Binding Teckenfärg[7]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[8]}" Foreground="{Binding Teckenfärg[8]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[9]}" Foreground="{Binding Teckenfärg[9]}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="0,20,0,0">
+                    <TextBlock Text="{Binding Alfabetet[10]}" Foreground="{Binding Teckenfärg[10]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[11]}" Foreground="{Binding Teckenfärg[11]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[12]}" Foreground="{Binding Teckenfärg[12]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[13]}" Foreground="{Binding Teckenfärg[13]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[14]}" Foreground="{Binding Teckenfärg[14]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[15]}" Foreground="{Binding Teckenfärg[15]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[16]}" Foreground="{Binding Teckenfärg[16]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[17]}" Foreground="{Binding Teckenfärg[17]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[18]}" Foreground="{Binding Teckenfärg[18]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[19]}" Foreground="{Binding Teckenfärg[19]}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="0,20,0,0">
+                    <TextBlock Text="{Binding Alfabetet[20]}" Foreground="{Binding Teckenfärg[20]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[21]}" Foreground="{Binding Teckenfärg[21]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[22]}" Foreground="{Binding Teckenfärg[22]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[23]}" Foreground="{Binding Teckenfärg[23]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[24]}" Foreground="{Binding Teckenfärg[24]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[25]}" Foreground="{Binding Teckenfärg[25]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[26]}" Foreground="{Binding Teckenfärg[26]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[27]}" Foreground="{Binding Teckenfärg[27]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[28]}" Foreground="{Binding Teckenfärg[28]}"></TextBlock>
+                    <TextBlock Text="{Binding Alfabetet[29]}" Foreground="{Binding Teckenfärg[29]}"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <TextBlock x:Name="nyrundatext" Text="Tryck ENTER för att köra en ny runda" Visibility="Hidden" FontSize="16" HorizontalAlignment="Center" Margin="100, 80, 0, 0"></TextBlock>
+    </Grid>
+</Window>
