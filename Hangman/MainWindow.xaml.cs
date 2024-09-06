@@ -34,7 +34,7 @@ namespace Hangman
         };
 
         string valtOrd;
-
+        string xcr;
         int counter = 1;
 
         bool nyrunda = false;
